@@ -144,9 +144,13 @@
 /* Modal styles */
 .modal {
     display: none;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.95);
@@ -155,20 +159,21 @@
 }
 
 .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
     max-width: 1000px;
     background-color: transparent;
     border-radius: 10px;
+    padding-top: 30px;
+    height: 100%;
 }
 
 .close-modal {
     position: absolute;
-    right: 10px;
-    top: -40px;
+    right: 24px;
+    top: 24px;
     color: white;
     font-size: 24px;
     cursor: pointer;
@@ -178,14 +183,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
     transition: all 0.3s ease;
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .close-modal:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 0, 0, 0.8);
     transform: scale(1.1);
     border-color: rgba(255, 255, 255, 0.5);
 }
@@ -439,15 +444,15 @@ body.modal-open {
 }
 
 .country-flag {
-    width: 30px;
-    height: 20px;
+    width: 50px;
+    height: 30px;
     object-fit: cover;
     border-radius: 4px;
 }
 
 .country-name {
     color: var(--text-color);
-    font-size: 0.9rem;
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -544,7 +549,7 @@ body.modal-open {
     }
 
     .channel-name {
-        font-size: 0.9rem;
+        font-size: 20px;
     }
 }
 
@@ -587,4 +592,83 @@ body.modal-open {
     color: var(--text-color-secondary);
     opacity: 0.5;
     font-size: 0.7em;
+}
+
+.video-container {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.video-wrapper {
+    width: 95%;
+    max-width: 1280px;
+    position: relative;
+    aspect-ratio: 16/9;
+}
+
+.iframe-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    z-index: 100000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.iframe-close-btn:hover {
+    background: rgba(255, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        padding: 0;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        height: 100vh;
+        aspect-ratio: auto;
+    }
+
+    .video-wrapper iframe {
+        border-radius: 0;
+    }
+
+    .iframe-close-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
 }
